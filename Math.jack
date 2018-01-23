@@ -47,6 +47,18 @@ class Math {
      *  the Jack expressions x/y and divide(x,y) return the same value.
      */
     function int divide(int x, int y) {
+		var int q;
+		
+		if(y > x) {
+			return 0;
+		}
+		let q = divide(x, 2 * y);
+		if((x - 2*q*y) < y) {
+			return 2 * q;
+		}
+		else {
+			return 2 * q + 1;
+		}
     }
 
     /** Returns the integer part of the square root of x. */
@@ -55,9 +67,19 @@ class Math {
 
     /** Returns the greater number. */
     function int max(int a, int b) {
+		if(a > b) {
+			return a;
+		} else {
+			return b;
+		}
     }
 
     /** Returns the smaller number. */
     function int min(int a, int b) {
+		if(a < b) {
+			return a;
+		} else {
+			return b;
+		}
     }
 }
