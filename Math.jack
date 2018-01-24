@@ -8,9 +8,12 @@
  * Note: Jack compilers implement multiplication and division using OS method calls.
  */
 class Math {
+	static Array twoToThe;
 
     /** Initializes the library. */
     function void init() {
+		let twoToThe = Array.new(16);
+		return;
     }
 
     /** Returns the absolute value of x. */
@@ -33,12 +36,56 @@ class Math {
 		let i = 0;
 		
 		while(i < 16) {
-			if(ithBitOf(y) == 1) {
+			if(Math.bit(y, 16 - i) = true) {
 				let sum = sum + shiftedX;
 			}
 			let shiftedX = shiftedX * 2;
+			let i = i + 1;
 		}
 		return sum;
+    }
+	
+	function boolean bit(int x, int i) {
+		
+		
+		return true;
+	}
+	
+	function void convert(int value) {
+    	var int mask, position;
+    	var boolean loop;
+		
+    	let position = 0;
+    	let loop = true;
+    	while (loop) {
+    	    
+    	    let mask = Main.nextMask(mask);
+    	
+    	    if (~(position > 15)) {
+    	
+    	        if (~((value & mask) = 0)) {
+    	            let twoToThe[position] = 1;
+       	        }
+    	        else {
+    	            let twoToThe[position] = 0;
+      	        }    
+    	    }
+    	    else {
+    	        let loop = false;
+    	    }
+			let position = position + 1;
+    	}
+    	return;
+    }
+ 
+    /** Returns the next mask (the mask that should follow the given mask). */
+    function int nextMask(int mask) {
+    	if (mask = 0) {
+    	    return 1;
+    	}
+    	else {
+	    return mask * 2;
+    	}
     }
 
     /** Returns the integer part of x/y.
@@ -52,7 +99,7 @@ class Math {
 		if(y > x) {
 			return 0;
 		}
-		let q = divide(x, 2 * y);
+		let q = Math.divide(x, 2 * y);
 		if((x - 2*q*y) < y) {
 			return 2 * q;
 		}
@@ -63,6 +110,7 @@ class Math {
 
     /** Returns the integer part of the square root of x. */
     function int sqrt(int x) {
+		return 0;
     }
 
     /** Returns the greater number. */
