@@ -10,11 +10,18 @@
  */ 
 class Memory {
 
-	var Array ram;
+	static Array ram;
+	static Array heap;
+	static int freeList;
 
     /** Initializes the class. */
     function void init() {
 		let ram = 0;
+		let freeList = 2048; 
+		let heap = 2048;
+		let heap[0] = 0;
+		let heap[1] = 14335;
+		return;
     }
 
     /** Returns the RAM value at the given address. */
@@ -25,15 +32,48 @@ class Memory {
     /** Sets the RAM value at the given address to the given value. */
     function void poke(int address, int value) {
 		let ram[address] = value;
+		return;
     }
 
     /** Finds an available RAM block of the given size and returns
      *  a reference to its base address. */
     function int alloc(int size) {
+		var int flPtr;
+		var int block;
+		let block = -1;
+		let flPtr = freeList - heap;
+		
+		while(flPtr > 0 | block > 0) {
+			if(heap[flPtr+1] = (size+2) | heap[flPtr+1] > (size+2) ) {
+				// create new block to return to caller
+				let block = (heap + flPtr) + (heap[flPtr+1]) - size;
+				let ram[block] = -1;
+				let ram[block+1] = size;
+				let block = block + 2;
+				// adjust free block size
+				let heap[flPtr+1] = heap[flPtr+1] - size; 
+			}
+							
+			let flPtr = heap[flPtr] - freeList;			
+		}					
+		
+		if(block > 0) {
+			return block;
+		}	
+		else {
+			return -1;
+		}
     }
 
     /** De-allocates the given object (cast as an array) by making
      *  it available for future allocations. */
     function void deAlloc(Array o) {
+		return;
     }    
+	
+	
+	/** De-fragmets the memory blocks to create larger continous blocks of memory */
+	function void deFrag() {
+		return;
+	}
 }
