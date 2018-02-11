@@ -71,10 +71,11 @@ class Memory {
 		var int flPtr;
 		var int lastBlockPtr;
 		let flPtr = freeList - heap;
-		while(heap[flPtr] > 0) {
-			
+		while(heap[flPtr] > 0) {			
 			let flPtr = heap[flPtr] - freeList;
 		}
+		
+		let heap[flPtr] = o-2;
 		return;
     }    
 	
