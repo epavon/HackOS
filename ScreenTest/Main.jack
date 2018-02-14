@@ -7,15 +7,12 @@
 class Main {
 
     /** Draws a sample pictue on the screen using lines and circles. */
-    function void main() {
-    
-        do Screen.drawPixel(20, 1);    
-        do Screen.drawPixel(20, 2);    
-		do Screen.drawPixel(20, 3);    
-		do Screen.drawPixel(20, 4);
-		do Screen.drawPixel(20, 5);
-		do Screen.drawPixel(20, 6);
-		do Screen.drawPixel(20, 7);
+    function void main() {    
+        do Screen.drawLine(0,220,511,220);        // base line
+		do Screen.drawLine(233, 0, 233, 120);
+		do Screen.drawLine(140,26, 140, 6);
+		do Screen.drawLine(55, 30, 355, 190);
+		
         return;
     }
 }
