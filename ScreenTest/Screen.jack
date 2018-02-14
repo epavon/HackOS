@@ -40,9 +40,9 @@ class Screen {
 		
 		let address = (32 * y) + (x / 16);
 		let value = Memory.peek(16384 + address);
-		let ithbit = Screen.mod(x, 16);
-		
-		if(~currentColor) {
+		let ithbit = Screen.mod(x, 16);			
+				
+		if(currentColor) {
 			let mask = Screen.pow(2, ithbit);
 			let value = value | mask;
 		}
@@ -50,9 +50,9 @@ class Screen {
 			let mask = Screen.pow(2, ithbit);
 			let mask = ~mask;
 			let value = value & mask;
-		}
+		}			
 		
-		do Memory.poke(address, value);
+		do Memory.poke(16384 + address, value);
 		return;		
     }
 	

@@ -9,8 +9,13 @@ class Main {
     /** Draws a sample pictue on the screen using lines and circles. */
     function void main() {
     
-        do Screen.drawPixel(120, 142);    
-        do Screen.drawPixel(121, 142);
+        do Screen.drawPixel(20, 1);    
+        do Screen.drawPixel(20, 2);    
+		do Screen.drawPixel(20, 3);    
+		do Screen.drawPixel(20, 4);
+		do Screen.drawPixel(20, 5);
+		do Screen.drawPixel(20, 6);
+		do Screen.drawPixel(20, 7);
         return;
     }
 }
