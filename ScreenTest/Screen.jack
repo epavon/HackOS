@@ -142,10 +142,13 @@ class Screen {
 		let b = 0;
 		let diff = 0;
 		let dx = Math.abs(x1 - x2);
-		let dy = Math.abs(y1 - y2);		
+		let dy = Math.abs(y1 - y2);			
 		
-		while( (a < dx | a = dx) & (b < dy | b = dy) ) {
-			do Screen.drawPixel(leftx + a, lefty + b);			
+		do Output.moveCursor(10, 53);
+			do Output.printInt(a);
+		
+		while( ((a < dx) | (a = dx) ) & ((b < dy) | (b = dy) ) ) {
+			do Screen.drawPixel(leftx + a, lefty + b);				
 			
 			if(diff < 0) {
 				let a = a + 1;
@@ -155,7 +158,7 @@ class Screen {
 				let b = b + 1;
 				let diff = diff - dx;
 			}
-		}
+		}		
  	
 		return;
     }
