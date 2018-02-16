@@ -11,7 +11,7 @@ class Main {
         do Screen.drawLine(0,220,511,220);        // base line
 		do Screen.drawLine(233, 0, 233, 120);
 		
-		do Screen.drawLine(55, 30, 355, 190);
+		do Screen.drawLine( 355, 230, 55, 90);
 		
         return;
     }
