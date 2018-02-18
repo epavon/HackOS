@@ -220,21 +220,22 @@ class Output {
 		var int maskedValue;
 		
 		let i = 0;
-		let pixelx = cursor[0] * 8;
-		let pixely = cursor[1] * 11;
+		let pixelx = cursor[1] * 8;
+		let pixely = cursor[0] * 11;
 		let memAddr = (32 * pixely) + (pixelx / 16);
 		let memValue = Memory.peek(16384 + memAddr);
 		
-		if(Output.mod(pixelx, 16) = 0) {
-			
-		}
-		else {
 		
-		}
+		let mask = 255;
+		if(~(Output.mod(pixelx, 16) = 0)) {
+			let mask = ~mask;
+		}					
+		let memValue = memValue & mask;
+		
 		
 		while(i < 11) {
 			
-			let i = i + 1;
+			let i = i + 1; 
 		}
 		
 		return;
