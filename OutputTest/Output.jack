@@ -18,13 +18,14 @@ class Output {
 
     // Character map for displaying characters
     static Array charMaps; 
-	// Cursor
 	static Array cursor;
 
     /** Initializes the screen, and locates the cursor at the screen's top-left. */
     function void init() {
-		do Screen.initMap();
+		do Output.initMap();
 		let cursor = Array.new(2);
+		let cursor[0] = 0;
+		let cursor[1] = 0;
 		return;
     }
 
@@ -181,75 +182,57 @@ class Output {
     /** Moves the cursor to the j-th column of the i-th row,
      *  and erases the character displayed there. */
     function void moveCursor(int i, int j) {
-		var Array curCharMap;
-		
-		let curCharMap = Output.getMap(" ");
-		do Output.drawCharMap(curCharMap);
+		var int pixelx, pixely, width, height;
 		let cursor[0] = i;
 		let cursor[1] = j;
 		
 		// delete char
-		//do Screen.setColor(false);
-		//do Screen.drawRectangle((11 * j), (8 * i), 11, 8);
-		
+		do Screen.setColor(false);
+		let pixelx = 8 * j;
+		let pixely = 11 * i;
+		if(j = 63) {
+			let width = 7;
+		}
+		else {
+			let width = 8;
+		}		
+		do Screen.drawRectangle(pixelx, pixely, pixelx + width, pixely + 11);		
 		
 		return;
     }
-	
-	/** Moves the cursor to the next space from j-th 
-	 *	column of the i-th row,
-     *  and erases the character displayed there. */
-	function void advanceCursorOneChar(int i, int j) {
-		
-		if(cursor[1] = 63) {
-			let cursor[0] = cursor[0] + 1;
-		}
-		else {
-			let cursor[1] = cursor[1] + 1;
-		}
-		
-		return;
-	}
-	
-	function int mod(int x, int y) {		
-		return x - ((x/y) * y);	
-	}
-	
-	function void drawCharMap(Array curCharMap) {
-		var int i, pixelx, pixely, memAddr, memValue, mask;
-		var int maskedValue;
-		
-		let i = 0;
-		let pixelx = cursor[1] * 8;
-		let pixely = cursor[0] * 11;
-		let memAddr = (32 * pixely) + (pixelx / 16);
-		let memValue = Memory.peek(16384 + memAddr);
-		
-		
-		let mask = 255;
-		if(~(Output.mod(pixelx, 16) = 0)) {
-			let mask = ~mask;
-		}					
-		let memValue = memValue & mask;
-		
-		
-		while(i < 11) {
-			
-			let i = i + 1; 
-		}
-		
-		return;
-	}
 
     /** Displays the given character at the cursor location,
      *  and advances the cursor one column forward. */
     function void printChar(char c) {
-		var Array currCharMap;
-		let currCharMap = Output.getMap(c);
-		do Output.drawCharMap(currCharMap);
+		var int i, pixelx, pixely, memAddr, value, mask;		
+		var Array curCharMap;
 		
+		let curCharMap = Output.getMap(c);
+		let i = 0;
+		let pixelx = cursor[1] * 8;
+		let pixely = cursor[0] * 11;
+		
+		while(i < 11) {			
+			let memAddr = (32 * pixely) + (pixelx / 16);
+			let value = Memory.peek(16384 + memAddr);				
+			
+			let mask = 255;
+			if(~(Output.mod(pixelx, 16) = 0)) {
+				let mask = ~mask;
+			}					
+			let value = value & mask; // zero out half of 16-bit word
+			let value = value | curCharMap[i];
+			do Memory.poke(16384 + memAddr, value);
+			let i = i + 1;
+			let pixely = pixely + 1;
+		}
+	
 		return;
     }
+	
+	function int mod(int x, int y) {		
+		return x - ((x/y) * y);	
+	}
 
     /** displays the given string starting at the cursor location,
      *  and advances the cursor appropriately. */
