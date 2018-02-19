@@ -244,21 +244,24 @@ class Output {
     /** Displays the given integer starting at the cursor location,
      *  and advances the cursor appropriately. */
     function void printInt(int i) {
-	
+		
 		return;
     }
 
     /** Advances the cursor to the beginning of the next line. */
     function void println() {
-	
+		do Output.moveCursor(cursor[0]+1, cursor[1]);
 		return;
     }
 
     /** Moves the cursor one column back. */
     function void backSpace() {
-		// delete char behind
-		
-		// move cursor back
+		if(cursor[1] = 0) {
+			do Output.moveCursor(cursor[0]-1, 22);
+		}
+		else {
+			do Output.moveCursor(cursor[0], cursor[1]-1);
+		}
 		
 		return;
     }
