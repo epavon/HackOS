@@ -219,10 +219,14 @@ class Output {
 			let mask = 255;
 			if((Output.mod(pixelx, 16) = 0)) {
 				let mask = ~mask;
+				let value = value & mask; // zero out half of 16-bit word
+				let value = value | curCharMap[i];
+			}		
+			else {
+				let value = value & mask; // zero out half of 16-bit word
+				let value = value | (curCharMap[i] * 256);
 			}					
-			let value = value & mask; // zero out half of 16-bit word
-			// must invert curCharMap is it's on right side of word
-			let value = value | curCharMap[i];
+			
 			do Memory.poke(16384 + memAddr, value);
 			let i = i + 1;
 			let pixely = pixely + 1;
