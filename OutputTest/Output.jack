@@ -217,10 +217,11 @@ class Output {
 			let value = Memory.peek(16384 + memAddr);				
 			
 			let mask = 255;
-			if(~(Output.mod(pixelx, 16) = 0)) {
+			if((Output.mod(pixelx, 16) = 0)) {
 				let mask = ~mask;
 			}					
 			let value = value & mask; // zero out half of 16-bit word
+			// must invert curCharMap is it's on right side of word
 			let value = value | curCharMap[i];
 			do Memory.poke(16384 + memAddr, value);
 			let i = i + 1;
@@ -243,8 +244,16 @@ class Output {
 
     /** Displays the given integer starting at the cursor location,
      *  and advances the cursor appropriately. */
-    function void printInt(int i) {
-		
+    function void printInt(int i) {		
+		if((i / 10) = 0) {
+			do Output.printChar(48 + i);			
+		}
+		else {
+			do Output.printInt(i/10);
+			let cursor[1] = cursor[1] + 1;
+			do Output.printInt(i - ((i/10)*10));
+		}
+				
 		return;
     }
 
