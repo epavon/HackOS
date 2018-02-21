@@ -242,35 +242,60 @@ class Output {
     /** displays the given string starting at the cursor location,
      *  and advances the cursor appropriately. */
     function void printString(String s) {
+		var int i;
+		let i = 2;
+		
+		while(i < (s.length()+2)) {
+			do Output.printChar(s[i]);
+			if(cursor[1] = 63) {
+				do Output.println();
+			}
+			else {
+				let cursor[1] = cursor[1] + 1;
+			}
+			let i = i + 1;
+		}
 	
 		return;
     }
 
     /** Displays the given integer starting at the cursor location,
      *  and advances the cursor appropriately. */
-    function void printInt(int i) {		
+    function void printInt(int i) {	
+		if(i < 0) {
+			do Output.printChar(45);
+			let cursor[1] = cursor[1] + 1;
+			let i = i * -1;
+		}
+	
+		do Output.printUnsignedInt(i);
+		
+		return;
+    }
+	
+	function void printUnsignedInt(int i) {
 		if((i / 10) = 0) {
 			do Output.printChar(48 + i);			
 		}
 		else {
-			do Output.printInt(i/10);
+			do Output.printUnsignedInt(i/10);
 			let cursor[1] = cursor[1] + 1;
-			do Output.printInt(i - ((i/10)*10));
+			do Output.printUnsignedInt(i - ((i/10)*10));
 		}
 				
 		return;
-    }
+	}
 
     /** Advances the cursor to the beginning of the next line. */
     function void println() {
-		do Output.moveCursor(cursor[0]+1, cursor[1]);
+		do Output.moveCursor(cursor[0]+1, 0);
 		return;
     }
 
     /** Moves the cursor one column back. */
     function void backSpace() {
 		if(cursor[1] = 0) {
-			do Output.moveCursor(cursor[0]-1, 22);
+			do Output.moveCursor(cursor[0]-1, 63);
 		}
 		else {
 			do Output.moveCursor(cursor[0], cursor[1]-1);
