@@ -49,7 +49,7 @@ class Keyboard {
 		
 		while(Keyboard.keyPressed() = 0) { }
 		let result = Keyboard.keyPressed();
-		while(~(Keyboard.keyPressed() = 0)) {}
+		while(~(Keyboard.keyPressed() = 0)) { }
 		do Output.printChar(result); // this function also advances cursor		
 		
 		return result;
@@ -61,25 +61,27 @@ class Keyboard {
      * and returns its value. Also handles user backspaces.
      */
     function String readLine(String message) {
-		var string result;
+		var String result;
 		var char ch;
-		let result = "";
+		let result = String.new(63);
 		
+		do Output.printString(message);
 		while(true) {
 			let ch = Keyboard.readChar();
-			if(ch = 128) {
-				do Output.println();
+			
+			if(ch = 128) {				
+				
 				return result;
 			}
 			else {
-				if(ch = 129) {
-					do result.eraseLastChar();
-					do Output.backspace();
-				} else {
-					let result = result.appendChar(ch);
+				if(ch = 129) {										
+					do result.eraseLastChar();					
+					do Output.backSpace();
+				} else {					
+					let result = result.appendChar(ch);						
 				}
 			}
-		}
+		}			
 		
 		return result;		
     }   

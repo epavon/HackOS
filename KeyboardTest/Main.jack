@@ -52,8 +52,8 @@ class Main {
 	            let ok = true;
 	        }
 	    }
-	
-    	let ok = false;
+		
+		let ok = false;
         do Output.printString("readLine test:");
         do Output.println();
         do Output.printString("(Verify echo and usage of 'backspace')");
@@ -67,26 +67,10 @@ class Main {
    	                do Output.println();
    	                let ok = true;
    	            }
-    	    }
+    	    } else {
+				do Output.printString("error");
+			}
     	}
-
-	    let ok = false;
-        do Output.printString("readInt test:");
-        do Output.println();
-        do Output.printString("(Verify echo and usage of 'backspace')");
-        do Output.println();
-        while (~ok) {
-  	        let i = Keyboard.readInt("Please type '-32123' and press enter: ");
-
-	        if (i = (-32123)) {
-	            do Output.printString("ok");
-	            do Output.println();
-	            let ok = true;
-	        }
-	    }
-        
-        do Output.println();
-        do Output.printString("Test completed successfully");
         
         return;
     }
