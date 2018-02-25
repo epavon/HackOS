@@ -47,9 +47,11 @@ class Keyboard {
     function char readChar() {
 		var char result;
 		
+		do Output.printChar(0);
 		while(Keyboard.keyPressed() = 0) { }
 		let result = Keyboard.keyPressed();
 		while(~(Keyboard.keyPressed() = 0)) { }
+		do Output.backSpace();
 		do Output.printChar(result); // this function also advances cursor		
 		
 		return result;
@@ -75,8 +77,9 @@ class Keyboard {
 			}
 			else {
 				if(ch = 129) {										
+					// backspace will be output by readChar
 					do result.eraseLastChar();					
-					do Output.backSpace();
+					
 				} else {					
 					let result = result.appendChar(ch);						
 				}
@@ -93,6 +96,56 @@ class Keyboard {
      * entered text is detected). Also handles user backspaces. 
      */
     function int readInt(String message) {
+		var int result;
+		var boolean stillNumber, firstCharRead, isNegative;
+		var char ch;
+		
+		let result = 0;		
+		let stillNumber = true;
+		let firstCharRead = false;
+		
+		do Output.printString(message);
+		while(true) {
+			let ch = Keyboard.readChar();					
+			
+			if(ch = 128) {								
+				return result;
+			}	
+			if( (ch > 47) & (ch < 58) ) {				
+				if(stillNumber) {
+					if(~isNegative) {
+						let result = (result * 10) + (ch - 48);					
+					}
+					else {
+						let result = (result * 10) - (ch - 48);
+					}
+				}				
+			}
+			else {
+				if(ch = 129) {	// backsapce
+					// backspace will be output by readChar
+					if(stillNumber) {
+						let result = result / 10;					
+					}
+				}
+				else {
+					if(ch = 45) { // -
+						if(firstCharRead) {
+							let isNegative = true; 
+						} 
+						else {
+							let stillNumber = false;
+						}
+					} 
+					else {
+						let stillNumber = false;
+					}
+					
+				}
+			}			
+			
+			let firstCharRead = true;			
+		}		
 	
 		return 0;
     }
