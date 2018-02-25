@@ -86,6 +86,9 @@ class Main {
 	            let ok = true;
 	        }
 	    }
+		
+		do Output.println();
+        do Output.printString("Test completed successfully");
         
         return;
     }

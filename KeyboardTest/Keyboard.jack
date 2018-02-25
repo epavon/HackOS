@@ -103,6 +103,7 @@ class Keyboard {
 		let result = 0;		
 		let stillNumber = true;
 		let firstCharRead = false;
+		let isNegative = false;
 		
 		do Output.printString(message);
 		while(true) {
@@ -130,7 +131,7 @@ class Keyboard {
 				}
 				else {
 					if(ch = 45) { // -
-						if(firstCharRead) {
+						if(~firstCharRead) {
 							let isNegative = true; 
 						} 
 						else {
@@ -147,6 +148,6 @@ class Keyboard {
 			let firstCharRead = true;			
 		}		
 	
-		return 0;
+		return result;
     }
 }
