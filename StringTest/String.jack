@@ -18,7 +18,7 @@ class String {
      *  and initial length of 0. */
     constructor String new(int maxLength) {
 	
-		return;
+		return this;
     }
 
     /** Disposes this string. */
@@ -66,6 +66,8 @@ class String {
 
     /** Sets this string to hold a representation of the given value. */
     method void setInt(int val) {
+	
+		return;
     }
 
     /** Returns the new line character. */
