@@ -243,10 +243,10 @@ class Output {
      *  and advances the cursor appropriately. */
     function void printString(String s) {
 		var int i;
-		let i = 2;
+		let i = 0;
 		
-		while(i < (s.length()+2)) {
-			do Output.printChar(s[i]);
+		while(i < (s.length())) {
+			do Output.printChar(s.charAt(i));
 			if(cursor[1] = 63) {
 				do Output.println();
 			}
