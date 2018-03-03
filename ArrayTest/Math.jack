@@ -1,0 +1,179 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Math.jack
+
+/**
+ * A library of commonly used mathematical functions.
+ * Note: Jack compilers implement multiplication and division using OS method calls.
+ */
+class Math {
+	static Array twoToThe;
+
+    /** Initializes the library. */
+    function void init() {
+		let twoToThe = Array.new(16);
+		return;
+    }
+
+    /** Returns the absolute value of x. */
+    function int abs(int x) {
+		if(x < 0) {
+			return -1 * x;
+		}
+		return x;
+    }
+
+    /** Returns the product of x and y. 
+     *  When a Jack compiler detects the multiplication operator '*' in the 
+     *  program's code, it handles it by invoking this method. In other words,
+     *  the Jack expressions x*y and multiply(x,y) return the same value.
+     */
+    function int multiply(int x, int y) {
+		var int i, sum, shiftedX;
+		let sum = 0;
+		let shiftedX = x;
+		let i = 0;
+		
+		do Math.convert(y);		
+		while(i < 16) {
+			if(Math.bit(y, i) = true) {
+				let sum = sum + shiftedX;
+			}
+			let shiftedX = shiftedX + shiftedX;
+			let i = i + 1;
+		}
+		return sum;
+    }
+	
+	function boolean bit(int x, int i) {
+		if(twoToThe[i] = 0) {
+			return false;
+		}
+		else {
+			return true;
+		}		
+	}
+	
+	function void convert(int value) {
+    	var int mask, position;
+    	var boolean loop;
+		let mask = 0;
+    	let position = 0;
+    	let loop = true;
+    	while (loop) {    	    
+    	    let mask = Math.nextMask(mask);
+    	
+    	    if (~(position > 15)) {
+    	
+    	        if (~((value & mask) = 0)) {
+    	            let twoToThe[position] = 1;
+       	        }
+    	        else {
+    	            let twoToThe[position] = 0;
+      	        }    
+    	    }
+    	    else {
+    	        let loop = false;
+    	    }
+			let position = position + 1;
+    	}
+    	return;
+    }
+ 
+    /** Returns the next mask (the mask that should follow the given mask). */
+    function int nextMask(int mask) {
+    	if (mask = 0) {
+    	    return 1;
+    	}
+    	else {
+			return mask + mask;
+    	}
+    }
+
+    /** Returns the integer part of x/y.
+     *  When a Jack compiler detects the multiplication operator '/' in the 
+     *  program's code, it handles it by invoking this method. In other words,
+     *  the Jack expressions x/y and divide(x,y) return the same value.
+     */
+    function int divide(int x, int y) {
+		var int result;
+		let result = Math.unsignedDivide(Math.abs(x), Math.abs(y));
+		
+		if((x < 0 & y > 0) | (x > 0 & y < 0)) {
+			return Math.multiply(-1, result);
+		}
+		return result;
+    }
+	
+	function int unsignedDivide(int x, int y) {
+		var int q;
+		
+		if(y > x) {
+			return 0;
+		}
+		let q = Math.unsignedDivide(x, 2 * y);
+		if((x - (2*q*y)) < y) {
+			return 2 * q;
+		}
+		else {
+			return (2 * q) + 1;
+		}
+	}
+
+    /** Returns the integer part of the square root of x. */
+    function int sqrt(int x) {
+		var int i, square, nextSquare;
+		let i = 0;
+		let nextSquare = 0;
+		
+		while(true) {
+			let square = nextSquare;
+			let i = i + 1;
+			let nextSquare = Math.multiply(i,i);
+			
+			if(square = x | nextSquare < 0) {
+				return i - 1;
+			}
+			if(nextSquare = x) {
+				return i;
+			}
+			if(square < x & nextSquare > x) {
+				return i - 1;
+			}
+		}		
+		
+		return 0;
+    }
+
+	function int pow(int x, int y) {
+		var int result, i;
+		let result = 1;
+		let i = 0;
+		
+		while(i < y) {
+			let result = result * x;
+			let i = i + 1;
+		}
+		
+		return result;
+	}
+	
+    /** Returns the greater number. */
+    function int max(int a, int b) {
+		if(a > b) {
+			return a;
+		} else {
+			return b;
+		}
+    }
+
+    /** Returns the smaller number. */
+    function int min(int a, int b) {
+		if(a < b) {
+			return a;
+		} else {
+			return b;
+		}
+    }
+}

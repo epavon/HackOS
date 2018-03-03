@@ -10,10 +10,11 @@ class Sys {
 
     /** Performs all the initializations required by the OS. */
     function void init() {
-		do Math.init();
+		
 		do Memory.init();
+		do Math.init();
 		do Screen.init();
-		//do Keyboard.init();
+		do Keyboard.init();
 		do Output.init();
 		do Main.main();
 		
@@ -29,155 +30,111 @@ class Sys {
 
     /** Waits approximately duration milliseconds and returns.  */
     function void wait(int duration) {
-		var int i, j, k, delay;
+		var int i, j, k,a, b, c, delay;
 		let i = 0;
 		let j = 0;
 		let k = 0;
-		let delay = 25000;
+		let a = 0;
+		let b = 0;
+		let c = 0;
 		
-		while( i < (duration * delay)) {
-			while(j < (duration * delay)) {
-				while(k < (duration * delay)) {
+		let delay = 16;
+		
+		while( i < (delay)) {
+			while(j < (delay)) {
+				while(k < (delay)) {
 					let k = k + 1;
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
-					do Sys.runLoop(duration * delay);do Sys.runLoop(duration * delay);
+					while(a < delay) {
+						let a = a + 1;
+						while(b < delay) {
+							let b = b + 1;
+							while(c < delay) {
+								let c = c + 1;
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								do Sys.runLoop(delay);do Sys.runLoop(delay);
+								
+							}
+						}
+					}					
 				}
 				let j = j + 1;
 			}
 			let i = i + 1;
 		}
 		
-		
+		if(duration > 0)
+		{
+			do Sys.wait(duration - 300);
+		}			
 		
 		return;
     }
